@@ -1,0 +1,23 @@
+#!/bin/bash
+
+USER_ID=$(id -u)
+
+echo "Welcome ${USER_ID} !"
+
+echo 'Please enter the file name: '
+read  FILE_NAME
+echo "The file name is ${FILE_NAME}"
+
+if [[ ${USER_ID} -eq 0 ]]
+
+then
+
+	echo "You are root (${USER_ID}, $(id -u) ), the operation can proceed."
+	chmod 755 ${FILE_NAME}
+	echo 'The permission were added'
+	ls -l
+else
+
+	echo "You are NOT root, you can't change the permissions to the file !"
+fi
+
